@@ -1,160 +1,94 @@
-// Smooth Scrolling for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// ============================
+// 1. Navbar Toggle for Mobile
+// ============================
+const navToggle = document.querySelector('.nav-toggle'); // Mobile menu button
+const navLinks = document.querySelector('.nav-links');  // Navigation links container
+const scrollLinks = document.querySelectorAll('.nav-links a'); // Individual navbar links
+
+// Toggle the mobile menu
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Show or hide the menu
+});
+
+// Close mobile menu after clicking a link (for mobile view)
+scrollLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active'); // Close menu
+    });
+});
+
+// ============================
+// 2. Smooth Scroll for Links
+// ============================
+scrollLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        const targetId = e.target.getAttribute('href').slice(1); // Get the target section ID
+        const targetElement = document.getElementById(targetId);
+
+        // Scroll to the target element
+        window.scrollTo({
+            top: targetElement.offsetTop - 70, // Adjust for fixed navbar
+            behavior: 'smooth',
         });
     });
 });
 
-// Typewriter Effect for Hero Section
-const typewriter = document.querySelector('.typewriter');
-const typeText = "Web Designer & Developer";
-let index = 0;
+// ============================
+// 3. Typing Effect in Hero Section
+// ============================
+const typewriterText = ["Hi, I'm John Mbusyo (Duke)", "A Creative Web Designer & Developer"]; // Text to type
+let typeIndex = 0; // Index for the current sentence
+let charIndex = 0; // Index for the current character
+const heroElement = document.querySelector('.typewriter'); // Typing target
 
-function type() {
-    if (index < typeText.length) {
-        typewriter.textContent += typeText.charAt(index);
-        index++;
-        setTimeout(type, 100);
-    }
-}
-type();
-
-// Portfolio Grid Hover Effect
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-portfolioItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'scale(1.05)';
-        item.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
-    });
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'scale(1)';
-        item.style.boxShadow = 'none';
-    });
-});
-
-// Form Validation for Hire Me Section
-const hireForm = document.querySelector('.hire-form');
-hireForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent the default form submission
-
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const project = document.getElementById('project').value;
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) {
-        alert('Please fill out all required fields!');
-        return;
-    }
-
-    // Simulate sending form data
-    alert(`Thank you, ${name}! Your message has been sent successfully.`);
-    hireForm.reset();
-});
-
-// Scroll-To-Top Button
-const scrollTopButton = document.createElement('button');
-scrollTopButton.textContent = "↑";
-scrollTopButton.classList.add('scroll-top');
-document.body.appendChild(scrollTopButton);
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-        scrollTopButton.style.display = 'block';
-    } else {
-        scrollTopButton.style.display = 'none';
-    }
-});
-
-scrollTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Animated Counters in About Section
-const counters = document.querySelectorAll('.stats h3');
-let counterStarted = false;
-
-function startCounters() {
-    if (counterStarted) return;
-
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const increment = target / 100;
-
-        let current = 0;
-
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.ceil(current);
-                setTimeout(updateCounter, 20);
-            } else {
-                counter.textContent = target;
-            }
-        };
-
-        updateCounter();
-    });
-
-    counterStarted = true;
-}
-
-window.addEventListener('scroll', () => {
-    const statsSection = document.querySelector('.stats');
-    const statsTop = statsSection.getBoundingClientRect().top;
-
-    if (statsTop < window.innerHeight - 100) {
-        startCounters();
-    }
-});
-
-// Contact Button Animation
-const contactButtons = document.querySelectorAll('.contact-btn');
-contactButtons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-        button.style.transform = 'translateY(-3px)';
-        button.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
-    });
-    button.addEventListener('mouseleave', () => {
-        button.style.transform = 'translateY(0)';
-        button.style.boxShadow = 'none';
-    });
-});
-
-
-// Services Section Animation
-const services = document.querySelectorAll('.service');
-window.addEventListener('scroll', () => {
-    services.forEach(service => {
-        const serviceTop = service.getBoundingClientRect().top;
-        if (serviceTop < window.innerHeight - 50) {
-            service.style.opacity = '1';
-            service.style.transform = 'translateY(0)';
+function typewriterEffect() {
+    if (typeIndex < typewriterText.length) {
+        if (charIndex < typewriterText[typeIndex].length) {
+            heroElement.textContent += typewriterText[typeIndex].charAt(charIndex); // Add character
+            charIndex++;
+            setTimeout(typewriterEffect, 100); // Typing speed
         } else {
-            service.style.opacity = '0';
-            service.style.transform = 'translateY(20px)';
+            charIndex = 0;
+            typeIndex++;
+            setTimeout(() => {
+                heroElement.textContent = ""; // Clear text before typing the next sentence
+                typewriterEffect();
+            }, 2000); // Pause before the next sentence
         }
+    } else {
+        typeIndex = 0; // Restart typing effect
+        setTimeout(typewriterEffect, 1000); // Pause before restarting
+    }
+}
+
+// Start the typing effect
+typewriterEffect();
+
+// ============================
+// 4. Portfolio Hover Effects
+// ============================
+const portfolioItems = document.querySelectorAll('.portfolio-item'); // Portfolio cards
+
+portfolioItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        const overlay = item.querySelector('.portfolio-overlay');
+        overlay.style.opacity = 1; // Show overlay on hover
+    });
+
+    item.addEventListener('mouseout', () => {
+        const overlay = item.querySelector('.portfolio-overlay');
+        overlay.style.opacity = 0; // Hide overlay when not hovered
     });
 });
 
-// Initial State for Animation
-services.forEach(service => {
-    service.style.opacity = '0';
-    service.style.transform = 'translateY(20px)';
-    service.style.transition = 'all 0.5s ease-out';
-});
+// ============================
+// 5. Dynamic Year in Footer
+// ============================
+const yearElement = document.getElementById('year'); // Footer year span
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear(); // Update year dynamically
+}
 
-
-// Navbar Toggle for Mobile
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
 
 
