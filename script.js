@@ -148,3 +148,13 @@ services.forEach(service => {
     service.style.transition = 'all 0.5s ease-out';
 });
 
+
+// Navbar Toggle for Mobile
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+
