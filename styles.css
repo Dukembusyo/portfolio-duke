@@ -106,9 +106,9 @@ a.contact-btn {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 60vh;
     text-align: center;
-    background: rgb(50, 50, 78);
+    background: rgb(76, 76, 96);
     color: white;
     padding: 20px;
 }
@@ -116,7 +116,7 @@ a.contact-btn {
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: white;
+    color: rgb(247, 245, 245);
 }
 
 .hero p {
