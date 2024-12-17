@@ -244,18 +244,98 @@ a.contact-btn {
 }
 
 /* Portfolio Section */
+#portfolio {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+#portfolio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#portfolio p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Portfolio Links */
+.portfolio-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-link i {
+    margin-right: 8px;
+}
+
+.portfolio-link.behance {
+    background-color: #1769ff; /* Behance blue */
+}
+
+.portfolio-link.behance:hover {
+    background-color: #1356cc; /* Darker Behance blue */
+    transform: translateY(-3px);
+}
+
+.portfolio-link.github {
+    background-color: #333; /* GitHub dark gray */
+}
+
+.portfolio-link.github:hover {
+    background-color: #555; /* Lighter GitHub gray */
+    transform: translateY(-3px);
+}
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Portfolio Item */
 .portfolio-item {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-item img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     display: block;
+}
+
+/* Hover Effect for Portfolio Items */
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Portfolio Overlay */
@@ -265,7 +345,7 @@ a.contact-btn {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -281,29 +361,34 @@ a.contact-btn {
     opacity: 1; /* Fully visible on hover */
 }
 
-/* "View Details" Button */
-.portfolio-overlay a {
-    background-color: #ff7e5f; /* Primary color for the button */
+/* Text on Overlay */
+.portfolio-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-overlay p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* View Details Button */
+.portfolio-overlay .portfolio-btn {
+    background-color: #ff7e5f; /* Gradient orange */
     color: #fff;
-    text-decoration: none;
     padding: 10px 20px;
+    text-decoration: none;
     border-radius: 5px;
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
 
-.portfolio-overlay a:hover {
-    background-color: #ff5722; /* Slightly darker shade on hover */
-    transform: translateY(-3px); /* Subtle lift on hover */
+.portfolio-overlay .portfolio-btn:hover {
+    background-color: #ff5722; /* Darker orange */
+    transform: translateY(-3px);
 }
 
-/* Portfolio Item Hover Effect */
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
 
 
 /* Chat Section */
