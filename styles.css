@@ -226,69 +226,166 @@ a.contact-btn {
 }
 
 /* Portfolio Section */
-#portfolio {
-    padding: 60px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-.portfolio-links {
-    margin-bottom: 30px;
-}
-
-.portfolio-links a {
-    margin: 0 10px;
-    color: #333;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.portfolio-links a:hover {
-    color: #ff7e5f;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
 .portfolio-item {
     position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .portfolio-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
+    display: block;
 }
 
+/* Portfolio Overlay */
 .portfolio-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
 }
 
 .portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
+    opacity: 1; /* Fully visible on hover */
 }
 
-.portfolio-overlay h3,
-.portfolio-overlay p {
-    margin: 10px 0;
+/* "View Details" Button */
+.portfolio-overlay a {
+    background-color: #ff7e5f; /* Primary color for the button */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
+
+.portfolio-overlay a:hover {
+    background-color: #ff5722; /* Slightly darker shade on hover */
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+/* Portfolio Item Hover Effect */
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Chat Section */
+#chat {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+}
+
+#chat h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#chat p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+}
+
+#chat-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-message {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#chat-message:focus {
+    border-color: #25d366; /* WhatsApp green */
+    box-shadow: 0 0 5px rgba(37, 211, 102, 0.5); /* Subtle green glow */
+}
+
+.chat-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.chat-buttons button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.chat-buttons button i {
+    margin-right: 10px;
+}
+
+/* WhatsApp Button */
+#send-whatsapp {
+    background-color: #25d366; /* WhatsApp green */
+}
+
+#send-whatsapp:hover {
+    background-color: #1da851; /* Darker green */
+    transform: translateY(-3px); /* Lift effect */
+}
+
+/* Email Button */
+#send-email {
+    background-color: #333; /* Neutral dark */
+}
+
+#send-email:hover {
+    background-color: #555; /* Slightly lighter dark */
+    transform: translateY(-3px); /* Lift effect */
+}
+
 
 /* Contact Section */
 #contact {

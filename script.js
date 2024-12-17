@@ -90,5 +90,35 @@ if (yearElement) {
     yearElement.textContent = new Date().getFullYear(); // Update year dynamically
 }
 
+// DOM Elements
+const chatMessage = document.getElementById('chat-message');
+const sendWhatsApp = document.getElementById('send-whatsapp');
+const sendEmail = document.getElementById('send-email');
+
+// Send Message via WhatsApp
+sendWhatsApp.addEventListener('click', () => {
+    const message = chatMessage.value.trim(); // Get the message content
+    if (message) {
+        const whatsappURL = `https://wa.me/254768537010?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank'); // Open WhatsApp in a new tab
+        chatMessage.value = ''; // Clear the input field
+    } else {
+        alert('Please type a message before sending.');
+    }
+});
+
+// Send Message via Email
+sendEmail.addEventListener('click', () => {
+    const message = chatMessage.value.trim(); // Get the message content
+    if (message) {
+        const emailAddress = 'dukembusyo@gmail.com';
+        const subject = 'New Message from Website Chat';
+        const mailtoURL = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        window.location.href = mailtoURL; // Open email client
+        chatMessage.value = ''; // Clear the input field
+    } else {
+        alert('Please type a message before sending.');
+    }
+});
 
 
