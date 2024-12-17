@@ -121,6 +121,7 @@ a.contact-btn {
     font-size: 3rem;
     margin-bottom: 20px;
     z-index: 2; /* Ensure content is above the background */
+    color: white;
 }
 
 .hero p {
