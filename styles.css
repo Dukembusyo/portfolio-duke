@@ -101,29 +101,47 @@ a.contact-btn {
 }
 
 /* Hero Section */
+/* Hero Section with Background Image */
 .hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: 80vh; /* Adjust the height as needed */
     text-align: center;
-    background: rgb(76, 76, 96);
+    background: url('images/bgportfolio.jpg') center/cover no-repeat; /* Add your image path here */
     color: white;
     padding: 20px;
+    position: relative; /* For overlay if needed */
+    z-index: 1;
 }
 
+/* Hero Content Styling */
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
-    color: rgb(247, 245, 245);
+    z-index: 2; /* Ensure content is above the background */
 }
 
 .hero p {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;
+    z-index: 2;
 }
+
+/* Optional: Overlay for better text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Add a dark overlay for contrast */
+    z-index: 0; /* Below content but above the background */
+}
+
 
 @media (max-width: 768px) {
     .hero h2 {
@@ -292,7 +310,7 @@ a.contact-btn {
 #chat {
     text-align: center;
     padding: 60px 20px;
-    background-color: #f7f7f7;
+    background-color: #f9f9f9;
     border-top: 1px solid #ddd;
 }
 
@@ -308,23 +326,27 @@ a.contact-btn {
     margin-bottom: 40px;
 }
 
+/* Chat Container Styling */
 .chat-container {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: left;
+    padding: 30px;
+    text-align: center;
 }
 
+/* Chat Form Styling */
 #chat-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #chat-message {
     width: 100%;
+    max-width: 500px;
     height: 100px;
     padding: 10px;
     font-size: 1rem;
@@ -333,6 +355,7 @@ a.contact-btn {
     outline: none;
     resize: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
 }
 
 #chat-message:focus {
@@ -340,19 +363,19 @@ a.contact-btn {
     box-shadow: 0 0 5px rgba(37, 211, 102, 0.5); /* Subtle green glow */
 }
 
+/* Chat Buttons Container */
 .chat-buttons {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
+/* Button Styling */
 .chat-buttons button {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
+    max-width: 220px;
+    padding: 12px 20px;
     font-size: 1rem;
     color: #fff;
     border: none;
@@ -360,10 +383,10 @@ a.contact-btn {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.chat-buttons button i {
-    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
 }
 
 /* WhatsApp Button */
@@ -385,6 +408,7 @@ a.contact-btn {
     background-color: #555; /* Slightly lighter dark */
     transform: translateY(-3px); /* Lift effect */
 }
+
 
 
 /* Contact Section */
